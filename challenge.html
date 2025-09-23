@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>{{ challenge.title }} ({{ challenge.points }} pts)</h2>
+  <p>{{ challenge.description }}</p>
+
+  {% if challenge.docker_image %}
+  <div class="my-3">
+    <button id="launchBtn" class="btn btn-info">Launch Instance</button>
+    <div id="instance-info" class="mt-2" style="display: none;">
+      <p>Your instance is running at: <a id="instance-url" href="#" target="_blank"></a></p>
+    </div>
+  </div>
+  {% endif %}
+
+  <form method="POST" class="mt-3">
+    <div class="mb-3">
+      <input type="text" name="flag" placeholder="Enter your flag here" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Flag</button>
+  </form>
+
+{% endblock %}

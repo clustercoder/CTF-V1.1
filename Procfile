@@ -1,0 +1,1 @@
+web: sh -c "python seed.py && gunicorn app:app"

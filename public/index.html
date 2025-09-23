@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CTF Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="loginForm">
+    <input type="text" name="username" placeholder="username"/>
+    <button type="submit">Login</button>
+  </form>
+  <script>
+    document.getElementById('loginForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const username = e.target.username.value;
+      const res = await fetch('/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username })
+      });
+      const json = await res.json();
+      if (json.ok) window.location = json.next;
+    };
+  </script>
+</body>
+</html>

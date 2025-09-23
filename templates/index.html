@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Available Challenges</h2>
+<div class="row">
+  {% for chall in challenges %}
+    <div class="col-md-6 mb-3">
+      <div class="card bg-secondary text-light">
+        <div class="card-body">
+          <h5 class="card-title">{{ chall.title }} ({{ chall.points }} pts)</h5>
+          <p class="card-text">{{ chall.description[:100] }}...</p>
+          <a href="{{ url_for('challenge', challenge_id=chall.id) }}" class="btn btn-primary">Solve</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}
